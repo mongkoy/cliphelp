@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
-from Tkinter import Tk
-import pdb
+
+
 import md5
 import argparse
 import sys
@@ -56,7 +56,6 @@ class ClipBoardRunner(threading.Thread):
                 buffer = afile.read()
                 if self.isFileChanged():
                     self.filehash = self.getHash()
-                    #print "clipboard file changed  "
                     appendtoClipboard(buffer)
             if is_clipboardchanged(self.initialclipboard):
                 buffer = getClipboardData()
@@ -69,7 +68,6 @@ class ClipBoardRunner(threading.Thread):
     def isFileChanged(self):
         newHash =  self.getHash()
         if newHash != self.filehash:
-            print newHash + " vs." + self.filehash
             return True
         return False
 
@@ -108,8 +106,6 @@ if __name__ == "__main__":
     clipboardfile = args.filepath
     myclipboard = ClipBoardRunner(fileconfigpath=clipboardfile)
     myclipboard.setDaemon(True)
-    #thread = threading.Thread(myclipboard)
-
     myclipboard.initialclipboard=""
     myclipboard.start()
     myclipboard.join()
