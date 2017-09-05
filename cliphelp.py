@@ -51,13 +51,12 @@ class ClipBoardRunner(threading.Thread):
 
     def run(self, *args):
         self.count +=1
-        print 'clipboard'
         while(True):
             with open(self.filepath,'rb') as afile:
                 buffer = afile.read()
                 if self.isFileChanged():
                     self.filehash = self.getHash()
-                    print "clipboard file changed  "
+                    #print "clipboard file changed  "
                     appendtoClipboard(buffer)
             if is_clipboardchanged(self.initialclipboard):
                 buffer = getClipboardData()
