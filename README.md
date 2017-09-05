@@ -15,4 +15,4 @@ if the file changes the contents will be then saved to the clipboard
 EXECUTION:
 run this on both guest and host
 
-./cliphelp -f <PATH OF THE SHARED FILE>
+./cliphelp -f <<PATH OF THE SHARED FILE>>
